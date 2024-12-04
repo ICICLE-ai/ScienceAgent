@@ -1,0 +1,8 @@
+pred_programs
+*.jsonl
+requirements.in
+eval_requirements.txt
+pred_programs
+program_to_eval
+# ignore pycache
+**/__pycache__/
