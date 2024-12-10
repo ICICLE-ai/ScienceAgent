@@ -243,7 +243,6 @@ class ScienceAgent():
 if __name__ == "__main__":
     agent = ScienceAgent(
         "anthropic.claude-3-5-sonnet-20240620-v1:0", #"gpt-4o-mini-2024-07-18",
-        cache_dir="/research/nfs_sun_397/chen.8336/.cache/",
         n_gpus=4,
         context_cutoff=28000,
         use_self_debug=False,

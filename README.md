@@ -1,10 +1,18 @@
 # Science Agent
-Language agents for data-driven scientific discovery tasks. The agent features the self-debug mechanism and shows the best performance on [ScienceAgentBench](https://github.com/OSU-NLP-Group/ScienceAgentBench).
+Language agents for data-driven scientific discovery tasks. The agent features the self-debug mechanism and shows the best performance on [ScienceAgentBench](https://github.com/OSU-NLP-Group/ScienceAgentBench). 
+
 
 
 
 ## Data Preparation
-We provide an example task from ScienceAgentBench in `benchmark/ScienceAgentBench.csv` to demonstrate the ability of science agent. For a full evaluation on ScienceAgentBench, please refer to the [ScienceAgentBench](https://github.com/OSU-NLP-Group/ScienceAgentBench) repo!
+You can run ScienceAgent on your own data by preparing a CSV file. Each entry should have at least the following columns:
+- `task_inst`: task instruction
+- `domain_knowledge`: optional domain knowledge, usually annotated by subject matter experts.
+- `dataset_folder_tree`: folder tree structure of the dataset(s)
+- `dataset_preview`: preview of a few entries in the dataset(s)
+
+We provide an example task from ScienceAgentBench in `benchmark/ScienceAgentBench.csv`.The additional fields are for evaluation of agent performance, which is not covered by this repository. 
+For a full evaluation on ScienceAgentBench, please refer to the [ScienceAgentBench](https://github.com/OSU-NLP-Group/ScienceAgentBench) repo!
 
 ## Setup
 
@@ -54,10 +62,11 @@ region=us-west-2
 You can run the agents with the following command:
 ```
 python -u run_infer.py \
+    --benchmark_name_or_path {BENCHMARK_PATH} \
     --llm_engine_name {MODEL_NAME} \
-    --log_fname {LOG_FNAME}
-    [--use_knowledge]
-    [--use_self_debug]
+    --log_fname {LOG_FNAME} \
+    [--use_knowledge] \
+    [--use_self_debug] \
 ```
 - `llm_engine_name`: name of base LLM on OpenAI or Amazon Bedrock.
 - `log_fname`: your customized log file (in JSONL) name to store agent trajectories and costs, e.g. `claude_self_debug.jsonl`.

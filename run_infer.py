@@ -12,7 +12,6 @@ import pandas as pd
 def format_task_dict(example, args):
     task = {
         "task_inst": example["task_inst"],
-        "dataset_path": args.datasets_path + example["dataset_folder_tree"].split("\n")[0][4:],
         "dataset_folder_tree": example["dataset_folder_tree"],
         "dataset_preview": example["dataset_preview"],
         "output_fname": example["output_fname"]
@@ -64,20 +63,6 @@ def main(args):
             with open(args.log_fname, "a+", encoding="utf-8") as log_f:
                 log_f.write(json.dumps(trajectory) + "\n")
 
-    # trajectory_logging = []
-    # for index, example in tqdm(dataset_df.iterrows()):
-    #     task = format_task_dict(example, args)
-    #     out_fname = Path(args.out_fpath, "pred_" + example["gold_program_name"])
-
-    #     trajectory = agent.solve_task(task, out_fname=str(out_fname))
-    #     trajectory_logging.append(trajectory)
-
-    # with open(args.log_fname, "w+", encoding="utf-8") as f:
-    #     json.dump(trajectory_logging, f, indent=2)
-
-    # avg_cost = sum([task["cost"] for task in trajectory_logging]) / len(trajectory_logging)
-    # print("Cost:", avg_cost)
-
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -87,19 +72,9 @@ if __name__ == "__main__":
         default="benchmark/ScienceAgentBench.csv",
     )
     parser.add_argument(
-        "--datasets_path",
-        type=str,
-        default="benchmark/datasets/",
-    )
-    parser.add_argument(
         "--llm_engine_name",
         type=str,
         default="Qwen/Qwen2-7B-Instruct",
-    )
-    parser.add_argument(
-        "--cache_dir",
-        type=str,
-        default="/research/nfs_sun_397/chen.8336/.cache/",
     )
     parser.add_argument(
         "--n_gpus",
