@@ -6,3 +6,4 @@ pred_programs
 program_to_eval
 # ignore pycache
 **/__pycache__/
+_catalog.yaml

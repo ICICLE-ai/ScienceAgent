@@ -76,3 +76,9 @@ python -u run_infer.py \
 Please see `run_science_agent.sh` for an example.
 
 The program predicted by the agent will be saved to `pred_programs/`. It will also create two files `requirements.in` and `eval_requirements.txt`. These are intermediate files used by self-debug. Feel free to delete them after the run.
+
+## License
+Code under this repo is licensed under a MIT License.
+
+## Acknowledgement
+This work has been sponsored in part by grants from the National Science Fundation, including the ICICLE AI Institute (OAC 2112606), Amazon, and Ohio Supercomputer Center.
